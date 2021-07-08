@@ -4,7 +4,7 @@ const mount = require('koa-mount');
 const { join, extname } = require('path');
 const { parseCookie, parseNavLang } = require('./serverHelper');
 
-const root = join(__dirname, 'dist');
+const root = join(__dirname, '../dist');
 
 const app = new Koa();
 app.use(
@@ -38,7 +38,7 @@ app.use(async (ctx, next) => {
   // 符合要求的路由才进行服务端渲染，否则走静态文件逻辑
   if (!ext) {
     if (!render) {
-      render = require('./dist/umi.server');
+      render = require('../dist/umi.server');
     }
     // 这里默认是字符串渲染
     ctx.type = 'text/html';
