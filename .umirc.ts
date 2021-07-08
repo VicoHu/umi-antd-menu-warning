@@ -5,7 +5,13 @@ export default defineConfig({
     type: 'none',
   },
   routes: [
-    { path: '/', component: '@/pages/index' },
+    {
+      component: '@/pages/index',
+      routes: [
+        { path: '/', component: '@/pages/home/index', redirect: '/home' },
+        { path: '/home', component: '@/pages/home/index' },
+      ],
+    },
   ],
   fastRefresh: {},
   ssr: {
@@ -17,5 +23,5 @@ export default defineConfig({
     // staticMarkup: false,
   },
   esbuild: {},
-  dynamicImport: {}
+  dynamicImport: {},
 });
